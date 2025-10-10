@@ -67,9 +67,9 @@ criterion = nn.CrossEntropyLoss()
 # Optimize
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
-train_folder = r'C:\Users\vince\Desktop\VSCode\cards-pytorch-model\cards-dataset\train'
-valid_folder = r'C:\Users\vince\Desktop\VSCode\cards-pytorch-model\cards-dataset\valid'
-test_folder = r'C:\Users\vince\Desktop\VSCode\cards-pytorch-model\cards-dataset\test'
+train_folder = r'cards-dataset\train'
+valid_folder = r'cards-dataset\valid'
+test_folder = r'cards-dataset\test'
 
 train_dataset = PlayingCardDataset(train_folder, transform=transform)
 valid_dataset = PlayingCardDataset(valid_folder, transform=transform)
@@ -80,7 +80,6 @@ valid_loader = DataLoader(valid_dataset, batch_size=32, shuffle=False)
 test_dataset_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
 
 num_epoch = 5 # epoch is one run through entire training set
-best_val_acc = 0.0 # track best validation accuracy
 train_losses, val_losses = [], []
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
